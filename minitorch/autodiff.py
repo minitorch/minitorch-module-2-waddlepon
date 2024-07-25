@@ -72,9 +72,9 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
             return
 
         seen.add(v.unique_id)
-        for n in v.parents:
-            visit(n)
         if not v.is_constant():
+            for n in v.parents:
+                visit(n)
             stack.append(v)
     visit(variable)
 
